@@ -1,5 +1,4 @@
-# Wavelength-recirculating-photonic-memory"""
-"""
+# """
 ABOBB Banking Simulation -- a small, validated result
 =======================================================
 
@@ -355,7 +354,7 @@ def run_tests() -> None:
     assert abs(payload_capacity_bits(1) / 8 - 125) < 1e-6
     # Erlang-C: known reference value, c=1, rho=0.5 -> M/M/1 mean wait = rho/(mu-lambda)
     mu, lam = 1.0, 0.5
-    expected = lam / (mu * (mu - lam)) if False else (lam / mu) / (mu - lam)  # M/M/1 Wq = rho/(mu-lambda)
+    expected = (lam / mu) / (mu - lam)  # M/M/1 Wq = rho/(mu-lambda)
     got = erlang_c_mean_wait(1, lam, mu)
     assert abs(got - expected) < 1e-9, (got, expected)
     print("All tests passed.")
